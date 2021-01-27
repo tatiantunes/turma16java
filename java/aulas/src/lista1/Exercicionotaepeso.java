@@ -20,7 +20,7 @@ public static void main(String[] args) {
 
 	media = (nota1*2 + nota2*3 + nota3*5)/(2+3+5);
 
-	System.out.println("\n A media do aluno é " + media);
+	System.out.printf("\n A media do aluno é %2f" ,media);
 		
 		
 	}
