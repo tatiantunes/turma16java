@@ -19,7 +19,7 @@ public class Ordemcrescente {
 		System.out.print("Digite mais um oto numero: ");
 		x2 = leia.nextInt();
 		
-		System.out.println("A ordem cescente dos numeros lidos são ");
+		System.out.println("A ordem crescente dos numeros lidos são ");
 		if(x<=x1 && x<=x2)
 		{
 			
