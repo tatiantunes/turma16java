@@ -1,42 +1,59 @@
 package entidades;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 public class CadFun {
-	public static void main(String[] args) {
-		Scanner leia = new Scanner(System.in);
-		int matricula,horas;
-		int matricula2,horas2;
-		String nome,nome2;
-		double valorHora,valorHora2;
-		double acrescimo;
-		System.out.println("Olá Empregado!!");
-		System.out.println("Digite sua matricula: ");
-		matricula = leia.nextInt();
-		leia.nextLine();
-		System.out.println("Digite seu nome: ");
-		nome = leia.nextLine();
-		System.out.println("Digite as horas que trabalhou ");
-		horas = leia.nextInt();
-		System.out.println("Digite o valor por hora");
-		valorHora = leia.nextDouble();
+	public static void main(String[] args) 
 		
-		System.out.println("Olá Empregado numero 2!!");
-		System.out.println("Digite sua matricula: ");
-		matricula2 = leia.nextInt();
-		leia.nextLine();
-		System.out.println("Digite seu nome: ");
-		nome2 = leia.nextLine();
-		System.out.println("Digite as horas que trabalhou ");
-		horas2 = leia.nextInt();
-		System.out.println("Digite o valor por hora");
-		valorHora2 = leia.nextDouble();
-		System.out.println("Digite o acrescimo do valor por fora");
-		acrescimo = leia.nextDouble();
-		
-		Empregado cliente1 = new Empregado(nome,matricula,horas,valorHora );
-		Terceiro cliente2 = new Terceiro(horas,valorHora,acrescimo);
-		System.out.println("O salario do primeiro Empregado é " + cliente1.Salario(cliente1.getHora()));
-		System.out.println("O salario do segundo Empregado é " + cliente2.Salario(cliente2.getHora()));
-		
+		{
+			Locale.setDefault(Locale.US);
+			Scanner leia = new Scanner(System.in);
+			List <Empregado> lista = new ArrayList<>(); //fazer lista
+			
+			System.out.println("Digite o numero de empregados");
+			int numero = leia.nextInt();
+			
+			for (int x=1;x<=numero; x++)
+			{
+				System.out.println("Funcionario : "+x);
+				System.out.print("Terceiro S/N :");
+				char op = leia.next().toUpperCase().charAt(0);
+				System.out.print("Digite a matricula :");
+				int matricula = leia.nextInt();
+				leia.nextLine();//limpeza do buffer de teclado
+				System.out.print("Digite o nome :");
+				String nome = leia.nextLine();
+				System.out.print("Digite as horas trabalhadas: ");
+				int horas = leia.nextInt();
+				System.out.print("Digite o valor por hora trabalhada :");
+				double valorHora = leia.nextDouble();
+				
+				if (op == 'S')
+				{
+					System.out.println("Digite o valor do acrescimo : ");
+					double acrescimo = leia.nextDouble();
+					lista.add(new Terceiro(nome, matricula, horas, valorHora, acrescimo));
+					
+				}
+				else if (op =='N')
+				{
+					lista.add(new Empregado(nome, matricula, horas, valorHora));
+				}
+			}
+			System.out.println();
+			System.out.println("PAGAMENTOS:");
+			for (Empregado emp : lista) 
+			{
+				System.out.println(emp.getNome() + " - $ " + String.format("%.2f", emp.Salario(emp.getHora())));
+			}
+			
+			
+			
+			
+	
+
+	
 		
 	}
 }

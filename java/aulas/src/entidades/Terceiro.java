@@ -12,6 +12,12 @@ public class Terceiro extends Empregado
 	}
 
 
+	public Terceiro(String nome, int matricula, int horas, double valorHora, double acrescimo) {
+		super(nome, matricula, horas, valorHora);
+		this.acrescimo = acrescimo;
+	}
+
+
 	public double getAcrescimo() 
 	{
 		return acrescimo;
